@@ -28,7 +28,7 @@ public class ExpensiveBurgerBuilder implements BurgerBuilder {
     }
 
     @Override
-    public double oignonPortion() {
+    public double onionPortion() {
         return 20;
     }
 
@@ -53,8 +53,8 @@ public class ExpensiveBurgerBuilder implements BurgerBuilder {
     }
 
     @Override
-    public BurgerBuilder withOignons() {
-        this.products.add(new DeepFriedOnions(this.oignonPortion()));
+    public BurgerBuilder withOnion() {
+        this.products.add(new DeepFriedOnions(this.onionPortion()));
         return this;
     }
 

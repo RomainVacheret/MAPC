@@ -21,7 +21,7 @@ public class ExpensiveRestaurant implements Restaurant {
                     case CHEESE:
                         rtr = new ExpensiveBurgerBuilder("MaxeeCheese", MeatType.BEEF, MeatSize.MEDIUM)
                             .withCheese()
-                            .withOignons();
+                            .withOnion();
                         break;
                     default:
                         System.out.println("Custom menus must be ordered separately");

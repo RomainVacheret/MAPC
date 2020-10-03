@@ -21,14 +21,14 @@ public class App {
         Burger bobDinner = advisor      
                 .selectRestaurant(RestaurantType.CHEAP)
                 .orderMenu(Menus.MEAT)
-                .withOignons()
+                .withOnion()
                 .withCheese()
                 .cook();
 
         Burger charlesDinner = advisor
                 .selectRestaurant(RestaurantType.EXPENSIVE)
                 .orderPersonnal("Ownstyle", MeatType.BEEF, MeatSize.BIG)
-                .withOignons()
+                .withOnion()
                 .withCheese()
                 .withSauce(SauceType.BARBECUE)
                 .withSauce(SauceType.BEARNAISE)

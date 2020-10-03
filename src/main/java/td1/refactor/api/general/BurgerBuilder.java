@@ -9,11 +9,11 @@ public interface BurgerBuilder {
     public double mediumMeatPortion();
     public double bigMeatPortion();
     public double cheesePortion();
-    public double oignonPortion();
+    public double onionPortion();
     public double saucePortion();
     public double tomatoPortion();
 
-    public BurgerBuilder withOignons();
+    public BurgerBuilder withOnion();
     public BurgerBuilder withCheese();
     public BurgerBuilder withSauce(SauceType type);
     public BurgerBuilder withTomato();
