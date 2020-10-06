@@ -1,0 +1,168 @@
+@startuml classdiagram
+' !include ../style/commons.style
+
+package refactor.api.general {
+
+    interface Product {
+        weight(): double
+        price(): double
+    }
+
+    interface FoodConstituent {
+        caloriesPer100g(): double
+    }
+
+    interface FoodProduct extends Product, FoodConstituent {
+        calories(): double
+    }
+
+    enum Menus {
+        MEAT, FISH, CHEESE, CUSTOM
+    }
+
+    enum SauceType {
+        BURGER, BARBECUE, BEARNAISE
+        + caloriesPer100g(): double
+    }
+
+    enum MeatType {
+        BEEF, WHITEFISH
+        + price(): double
+        + caloriesPer100g(): double
+    }
+
+    enum MeatSize {
+        LITTLE, MEIDUM, BIG
+    }
+
+    class Cheddar implements Product {
+        - weight: double
+        - BASE_PRICE: double = 4
+        + this(weight: double)
+        + weight(): double
+        + price(): double
+        + caloriesPer100g(): double
+    }
+
+    class DeepFriedOnions implements Product {
+        - weight: double
+        - BASE_PRICE: double = 1.5
+        + this(weight: double)
+        + weight(): double
+        + price(): double
+        + caloriesPer100g(): double
+    }
+
+    class Tomato implements Product {
+        - weight: double
+        - BASE_PRICE: double = 0.5
+        + this(weight: double)
+        + weight(): double
+        + price(): double
+        + caloriesPer100g(): double
+    }
+
+    class Sauce implements Product {
+        - weight: double
+        - type: SauceType
+        - {static} BASE_PRICE: double = 1
+        + this(type: SauceType, weight: double)
+        + weight(): double
+        + price(): double
+        + caloriesPer100g(): double
+    }
+    Sauce *--> "-type" SauceType
+
+    class Meat implements Product {
+        - weight: double
+        - type: MeatType
+        + this(type: MeatType, weight: double)
+        + weight(): double
+        + price(): double
+        + caloriesPer100g(): double
+    }
+    Meat *--> "-type" MeatType
+
+    class Burger implements FoodProduct {
+        ~ name: string
+        ~ items: FoodProduct
+        + this(name: string, items: List<FoodProduct>)
+        + weight(): double
+        + price(): double
+        + calories(): double
+        + caloriesPer100g(): doubl
+    }
+    Burger *-> "~items *" FoodProduct
+
+    abstract class BurgerBuilder {
+        # products: List<FoodProduct>
+        # name: string
+
+        + this(name: string, type: MeatType, size: MeatSize)
+        # {abstract} littleMeatPortion(): double
+        # {abstract} mediumMeatPortion(): double
+        # {abstract} bigMeatPortion(): double
+        # {abstract} cheesePortion(): double
+        # {abstract} onionPortion(): double
+        # {abstract} saucePortion(): double
+        # {abstract} tomatoPortion(): double
+
+        + withCheese(): BurgerBuilder
+        + withOnion(): BurgerBuilder
+        + withTomato(): BurgerBuilder
+        + withSauce(): BurgerBuilder
+        + cook(): Burger
+        + getMeatWeight(): double
+    }
+    BurgerBuilder *--> "~products *" FoodProduct
+
+    class ExpensiveBurgerBuilder extends BurgerBuilder {
+        + this(name: string, type: MeatType, size: MeatSize)
+        # {abstract} littleMeatPortion(): double
+        # {abstract} mediumMeatPortion(): double
+        # {abstract} bigMeatPortion(): double
+        # {abstract} cheesePortion(): double
+        # {abstract} onionPortion(): double
+        # {abstract} saucePortion(): double
+        # {abstract} tomatoPortion(): double
+    }
+    ExpensiveBurgerBuilder *--> "-type" MeatType
+    ExpensiveBurgerBuilder *--> "-size" MeatSize
+
+    class CheapBurgerBuilder extends BurgerBuilder {
+        + this(name: string, type: MeatType, size: MeatSize)
+        # {abstract} littleMeatPortion(): double
+        # {abstract} mediumMeatPortion(): double
+        # {abstract} bigMeatPortion(): double
+        # {abstract} cheesePortion(): double
+        # {abstract} onionPortion(): double
+        # {abstract} saucePortion(): double
+        # {abstract} tomatoPortion(): double
+    }
+    CheapBurgerBuilder *--> "-type" MeatType
+    CheapBurgerBuilder *--> "-size" MeatSize
+
+    class RestaurantFacotory {
+        - {static} instance: RestaurantFactory
+        - this()
+        + {static} getInstance(): RestaurantFactory
+        + selectRestaurant(type: RestaurantType): Restaurant
+    }
+
+    class CheapRestaurant implements Restaurant {
+        + orderMenu: BurgerBuilder(menuType: Menus): BurgerBuilder
+        + orderPersonnal: BurgerBuilder(name: string, type: MeatType, size: MeatSize): BurgerBuilder
+    }
+    CheapRestaurant ..> "-type" MeatType
+    CheapRestaurant ..> "-size" MeatSize
+    CheapRestaurant ..> "-menuType" Menus
+
+    class ExpensiveRestaurant implements Restaurant {
+        + orderMenu: BurgerBuilder(menuType: Menus): BurgerBuilder
+        + orderPersonnal: BurgerBuilder(name: string, type: MeatType, size: MeatSize): BurgerBuilder
+    }
+    ExpensiveRestaurant *..> "-type" MeatType
+    ExpensiveRestaurant *..> "-size" MeatSize
+    ExpensiveRestaurant *..> "-menuType" Menus
+}
+@enduml

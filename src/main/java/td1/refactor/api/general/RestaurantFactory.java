@@ -3,6 +3,15 @@ package td1.refactor.api.general;
 import td1.refactor.api.general.Restaurant.RestaurantType;
 
 public class RestaurantFactory {
+    private static RestaurantFactory instance;
+    private RestaurantFactory() {}
+
+    public static RestaurantFactory getInstance() {
+        if(instance == null) {
+            instance = new RestaurantFactory();
+        }
+        return instance;
+    }
     public Restaurant selectRestaurant(RestaurantType type) {
         Restaurant rtr = null;
         switch(type) {

@@ -12,13 +12,13 @@ public abstract class BurgerBuilder {
     protected final List<FoodProduct> products;
     protected final String name;
 
-    public abstract double littleMeatPortion();
-    public abstract double mediumMeatPortion();
-    public abstract double bigMeatPortion();
-    public abstract double cheesePortion();
-    public abstract double onionPortion();
-    public abstract double saucePortion();
-    public abstract double tomatoPortion();
+    protected abstract double littleMeatPortion();
+    protected abstract double mediumMeatPortion();
+    protected abstract double bigMeatPortion();
+    protected abstract double cheesePortion();
+    protected abstract double onionPortion();
+    protected abstract double saucePortion();
+    protected abstract double tomatoPortion();
 
     public BurgerBuilder(String name, MeatType type, MeatSize size) {
         this.name = name;

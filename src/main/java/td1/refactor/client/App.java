@@ -11,7 +11,7 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        RestaurantFactory advisor = new RestaurantFactory();
+        RestaurantFactory advisor = RestaurantFactory.getInstance();
 
         Burger aliceDinner = advisor
                 .selectRestaurant(RestaurantType.CHEAP)

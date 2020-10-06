@@ -9,37 +9,37 @@ public class ExpensiveBurgerBuilder extends BurgerBuilder {
     }
 
     @Override
-    public double cheesePortion() {
+    protected double cheesePortion() {
         return 30;
     }
 
     @Override
-    public double tomatoPortion() {
+    protected double tomatoPortion() {
         return 10;
     }
 
     @Override
-    public double onionPortion() {
+    protected double onionPortion() {
         return 20;
     }
 
     @Override
-    public double saucePortion() {
+    protected double saucePortion() {
         return 20;
     }
 
     @Override
-    public double littleMeatPortion() {
+    protected double littleMeatPortion() {
         return 100;
     }
 
     @Override
-    public double mediumMeatPortion() {
+    protected double mediumMeatPortion() {
         return 200;
     }
 
     @Override
-    public double bigMeatPortion() {
+    protected double bigMeatPortion() {
         return 400;
     }
 }
