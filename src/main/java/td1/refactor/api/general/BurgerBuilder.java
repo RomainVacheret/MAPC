@@ -1,29 +1,59 @@
 package td1.refactor.api.general;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import td1.refactor.api.general.Meat.MeatSize;
 import td1.refactor.api.general.Meat.MeatType;
 import td1.refactor.api.general.Sauce.SauceType;
 
-public interface BurgerBuilder {
-    public double littleMeatPortion();
-    public double mediumMeatPortion();
-    public double bigMeatPortion();
-    public double cheesePortion();
-    public double onionPortion();
-    public double saucePortion();
-    public double tomatoPortion();
+public abstract class BurgerBuilder {
 
-    public BurgerBuilder withOnion();
-    public BurgerBuilder withCheese();
-    public BurgerBuilder withSauce(SauceType type);
-    public BurgerBuilder withTomato();
-    
-    public Burger cook();
+    protected final List<FoodProduct> products;
+    protected final String name;
 
-    public default double getMeatWeight(MeatType type, MeatSize size) {
+    public abstract double littleMeatPortion();
+    public abstract double mediumMeatPortion();
+    public abstract double bigMeatPortion();
+    public abstract double cheesePortion();
+    public abstract double onionPortion();
+    public abstract double saucePortion();
+    public abstract double tomatoPortion();
+
+    public BurgerBuilder(String name, MeatType type, MeatSize size) {
+        this.name = name;
+        this.products = new ArrayList<>();
+        this.products.add(new Meat(type, this.getMeatWeight(size)));
+    }
+
+    public BurgerBuilder withOnion() {
+        this.products.add(new DeepFriedOnions(this.onionPortion()));
+        return this;
+    }
+
+    public BurgerBuilder withCheese() {
+        this.products.add(new Cheddar(this.cheesePortion()));
+        return this;
+    }
+
+    public BurgerBuilder withTomato()  {
+        this.products.add(new Tomato(this.tomatoPortion()));
+        return this;
+    }
+
+    public BurgerBuilder withSauce(SauceType type) {
+        this.products.add(new Sauce(type, this.saucePortion()));
+        return this;
+    }
+
+    public Burger cook() {
+        return new Burger(this.name, this.products);
+    }
+
+    public double getMeatWeight(MeatSize size) {
         double weight;
         switch(size) {
-            case LITTLE:
+            case LITTLE: 
                 weight = this.littleMeatPortion();
                 break;
             case MEDIUM:

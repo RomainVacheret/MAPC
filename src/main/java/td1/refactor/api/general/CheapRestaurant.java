@@ -12,7 +12,8 @@ class CheapRestaurant implements Restaurant {
                     case MEAT:
                         rtr = new CheapBurgerBuilder("Beefy", MeatType.BEEF, MeatSize.MEDIUM)
                             .withSauce(SauceType.BURGER)
-                            .withCheese();
+                            .withCheese()
+                            .withOnion();
                         break;
                     case FISH:
                         rtr = new CheapBurgerBuilder("Fishy", MeatType.WHITEFISH, MeatSize.LITTLE)
