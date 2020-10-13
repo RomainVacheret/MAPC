@@ -1,0 +1,35 @@
+@startuml
+    !include ../../style/commons.style
+
+    package ForumManagement{
+        class Forum {
+            - theme: Theme
+            - sujet: string
+        }
+
+        class Theme {
+            - salons: List<Salon>
+            + add(salon Salon)
+            + remove(integer i)
+            + size(): integer
+        }
+
+        class Salon {
+            - sujet: string
+            - messages: List<Messages>
+            + add()
+            + remove(integer i)
+            + size(): integer
+        }
+
+        class Message {
+            - sujet: string
+            - contenu: string
+            + add()
+            + remove(integer i)
+            + size(): integer
+        }
+    }
+
+
+@enduml
