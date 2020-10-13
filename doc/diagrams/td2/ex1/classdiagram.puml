@@ -1,0 +1,58 @@
+@startuml FileSystem
+!include ../../style/commons.style
+
+    package fileManagement {
+        enum ComposantType {
+            FILE, FOLDER
+        }
+
+        abstract class Composant {
+            - name: string
+            - owner: string
+            - content: List<string>
+            - size: integer
+            ~ this(name: string, owner: string)
+            + getName(): string
+            + getContent(): string
+            + getOwner(): string
+            + getSize(): integer
+            + {abstract} appendContent(content: string)
+            + setOwner(name: string)
+        }
+        Composant ..> OwnerManagement
+
+        class File extends Composant {
+            ~ this(name: string, owner: string)
+        }
+
+        class Folder extends Composant {
+            - children: List<Composant>
+            ~ this(name: string, owner: string)
+            + addChild(child: Composant)
+            + getChildren(): Composant
+            + removeChild()
+            + removeChildren()        
+        }
+        Folder --* Composant
+
+        class FSFactory #LightGreen{
+            - instance: FSFactory
+            + getInstance(): FSFactory
+            + createComposant(type: ComposantType, name: string, owner: string): Composant
+        }
+        FSFactory ..> File
+        FSFactory ..> Folder
+        Composant ..> ComposantType
+    
+        class OwnerManagement {
+            - {static] ownerNames: List<string>
+            + {static} addOwner(name: String): boolean
+            - {static} isOwnerNameAvailable(name: string): boolean
+        }
+
+        skinparam component {
+            BackgroundColor <<FSFactory>> GreenSpring
+        }
+
+    }
+@enduml
