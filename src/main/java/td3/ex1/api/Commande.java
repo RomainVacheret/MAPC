@@ -23,8 +23,8 @@ public class Commande implements PrePostVisitable, Visitable {
 
     @Override
     public void accept(Visitor visitor) {
-        visitor.visit(this);
-        for(Ligne l: ligne.value)
+        // visitor.visit(this);
+        // for(Ligne l: ligne.value)
 
     }
 

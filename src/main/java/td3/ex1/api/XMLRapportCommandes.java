@@ -1,6 +1,6 @@
 package td3.ex1.api;
 
-class XMLRapportCommande implements PrePostVisitor {
+public class XMLRapportCommandes implements PrePostVisitor {
 
     @Override
     public void postVisit(GroupeClient groupClient) {

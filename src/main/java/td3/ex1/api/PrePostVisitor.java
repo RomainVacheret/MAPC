@@ -1,6 +1,6 @@
 package td3.ex1.api;
 
-interface PrePostVisitor extends AbstractVisitor{  
+public interface PrePostVisitor extends AbstractVisitor{  
     void preVisit(GroupeClient groupClient);
     void preVisit(Client client);
     void preVisit(Commande commande);
