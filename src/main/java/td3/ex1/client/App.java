@@ -1,5 +1,5 @@
 package td3.ex1.client;
 
-public class App {
-    
+import td3.ex1.api.AbstractVisitor;
+public class App {   
 }
