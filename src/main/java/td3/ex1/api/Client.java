@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Client implements PrePostVisitable, Visitable {
-    public final String name;
+    private final String name;
     private final Map<String, Commande> commandes;
 
     public Client(String name) {
@@ -13,7 +13,7 @@ public class Client implements PrePostVisitable, Visitable {
     }
 
     public void addCommande(Commande commande) {
-        this.commandes.put(commande.name, commande);
+        this.commandes.put(commande.getName(), commande);
     }
 
     public void addLigne(String commande, Ligne ligne) {
@@ -30,6 +30,10 @@ public class Client implements PrePostVisitable, Visitable {
     public void accept(Visitor visitor) {
         // TODO Auto-generated method stub
 
+    }
+
+    public String getName() {
+        return name;
     }
     
 }

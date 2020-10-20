@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class GroupeClient implements PrePostVisitable, Visitable {
-    public final String name;
+    private final String name;
     public final Collection<Client> clients;
 
     public GroupeClient(String name) {
@@ -19,7 +19,7 @@ public class GroupeClient implements PrePostVisitable, Visitable {
     public void addCommande(String client, Commande commande) {
         for(int i = 0; i < ((ArrayList) this.clients).size(); i++) {
             Client c = (Client) ((ArrayList) this.clients).get(i);
-            if(c.name.equals(client)) {
+            if(c.getName().equals(client)) {
                 c.addCommande(commande);
             }
         }
@@ -28,7 +28,7 @@ public class GroupeClient implements PrePostVisitable, Visitable {
     public void addLigne(String client, String commande, Ligne ligne) {
         for(int i = 0; i < ((ArrayList) this.clients).size(); i++) {
             Client c = (Client) ((ArrayList) this.clients).get(i);
-            if(c.name.equals(client)) {
+            if(c.getName().equals(client)) {
                 c.addLigne(commande, ligne);
             }
         }
@@ -44,6 +44,10 @@ public class GroupeClient implements PrePostVisitable, Visitable {
     public void accept(Visitor visitor) {
         // TODO Auto-generated method stub
 
+    }
+
+    public String getName() {
+        return name;
     }
     
 }

@@ -1,7 +1,7 @@
 package td3.ex1.api;
 
 public class Ligne implements PrePostVisitable, Visitable {
-    public final String name;
+    private final String name;
     private int sum = 0;
 
     public Ligne(String name) {
@@ -23,6 +23,14 @@ public class Ligne implements PrePostVisitable, Visitable {
     public void accept(Visitor visitor) {
         // TODO Auto-generated method stub
 
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getSum() {
+        return this.sum;
     }
     
 }
