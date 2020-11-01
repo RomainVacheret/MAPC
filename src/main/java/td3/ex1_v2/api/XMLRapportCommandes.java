@@ -34,7 +34,7 @@ public class XMLRapportCommandes implements PrePostVisitor {
 
     @Override
     public void preVisit(Client client) {
-        System.out.println("<client>");
+        System.out.println(String.format("<client name=\"%s\">", client.getName()));
         for(Commande c: client.getCommandes().values()){
             c.accept((PrePostVisitor) this);
         }
