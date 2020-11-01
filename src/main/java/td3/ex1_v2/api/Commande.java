@@ -26,6 +26,10 @@ public class Commande implements PrePostVisitable, Visitable {
         visitor.visit(this);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     @Override
     public String toString() {
         return "Commande [lignes=" + lignes + ", name=" + name + "]";

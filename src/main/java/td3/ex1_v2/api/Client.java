@@ -16,6 +16,10 @@ public class Client implements PrePostVisitable, Visitable {
         this.commandes.get(commande).addLigne(ligne);
     }
 
+    public void addCommande(Commande commande) {
+        this.commandes.put(commande.getName(), commande);
+    }
+
     @Override
     public void accept(PrePostVisitor prePostVisitor) {
         prePostVisitor.preVisit(this);
@@ -24,6 +28,10 @@ public class Client implements PrePostVisitable, Visitable {
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     @Override
