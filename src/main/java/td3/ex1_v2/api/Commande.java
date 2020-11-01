@@ -30,6 +30,14 @@ public class Commande implements PrePostVisitable, Visitable {
         return this.name;
     }
 
+    public Map<String, Ligne> getLignes() {
+        return this.lignes;
+    }
+
+    public int getDette() {
+        return this.lignes.values().stream().map(Ligne::getSum).reduce(0, Integer::sum);
+    }
+
     @Override
     public String toString() {
         return "Commande [lignes=" + lignes + ", name=" + name + "]";

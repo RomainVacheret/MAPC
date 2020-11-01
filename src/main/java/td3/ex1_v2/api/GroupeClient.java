@@ -34,6 +34,10 @@ public class GroupeClient implements PrePostVisitable, Visitable {
         visitor.visit(this);
     }
 
+    public Map<String, Client> getClients() {
+        return this.clients;
+    }
+
     @Override
     public String toString() {
         return "GroupeClient [clients=" + clients + ", name=" + name + "]";

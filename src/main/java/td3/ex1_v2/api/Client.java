@@ -34,6 +34,14 @@ public class Client implements PrePostVisitable, Visitable {
         return this.name;
     }
 
+    public Map<String, Commande> getCommandes() {
+        return this.commandes;
+    }
+
+    public int getDette() {
+        return this.commandes.values().stream().map(Commande::getDette).reduce(0, Integer::sum);
+    }
+
     @Override
     public String toString() {
         return "Client [commandes=" + commandes + ", name=" + name + "]";

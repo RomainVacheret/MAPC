@@ -4,14 +4,14 @@ public class PrintRapportCommandes implements Visitor {
 
     @Override
     public void visit(GroupeClient groupeClient) {
-        // TODO Auto-generated method stub
-
+        for(Client c: groupeClient.getClients().values()){
+            c.accept(this);
+        }
     }
 
     @Override
     public void visit(Client client) {
-        // TODO Auto-generated method stub
-
+        System.out.println(String.format("Le client %s doit %d euros.", client.getName(), client.getDette()));
     }
 
     @Override
