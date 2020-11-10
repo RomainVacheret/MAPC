@@ -11,6 +11,8 @@ public class Distributeur {
 
     void setState(DistributeurState state) { this.state = state; }
 
+    void razCaisse() { this.caisse = 0; }
+
     public void donne(int monnaie) { this.state.donne(this, monnaie); }
     public void commandeCafe() { this.state.commandeCafe(this); }
     public void commandeThe() { this.state.commandeThe(this); }

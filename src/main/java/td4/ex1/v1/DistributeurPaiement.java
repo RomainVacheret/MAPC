@@ -1,6 +1,7 @@
 package td4.ex1.v1;
 
 public class DistributeurPaiement implements DistributeurState {
+    
     private static String INFO = "Action impossible";
     private static DistributeurState instance;
 
@@ -13,8 +14,6 @@ public class DistributeurPaiement implements DistributeurState {
         }
         return instance;
     }
-
-    
 
     @Override
     public void donne(Distributeur d, int monnaie) {
