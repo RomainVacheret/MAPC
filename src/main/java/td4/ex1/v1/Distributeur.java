@@ -7,10 +7,11 @@ public class Distributeur {
 
     public Distributeur() { this.state = DistributeurPaiement.getInstance(); }
 
-    int getCaisse() { return this.caisse; }
 
     void setState(DistributeurState state) { this.state = state; }
 
+    int getCaisse() { return this.caisse; }
+    void ajoutCaisse(int val) { this.caisse += val; }
     void razCaisse() { this.caisse = 0; }
 
     public void donne(int monnaie) { this.state.donne(this, monnaie); }

@@ -17,10 +17,9 @@ public class DistributeurPaiement implements DistributeurState {
 
     @Override
     public void donne(Distributeur d, int monnaie) {
-        Integer caisse = d.getCaisse(); 
         System.out.println(String.format("Encaisse %d.", monnaie));
-        caisse += monnaie;
-        if(caisse >= 10){
+        d.ajoutCaisse(monnaie);
+        if(d.getCaisse() >= 10){
             d.setState(DistributeurSelection.getInstance());
         } else {
             d.setState(DistributeurPaiement.getInstance());
