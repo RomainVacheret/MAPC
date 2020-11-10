@@ -6,10 +6,10 @@ public class App {
         DeplacementStrategy courir = new Courir();
         DeplacementStrategy voler = new Voler();
 
-        AttaqueStrategy mitraillette = new Mitraillette();
-        AttaqueStrategy lanceFlamme = new LanceFlamme();
-        AttaqueStrategy canon = new Canon();
-        AttaqueStrategy missile = new Missible();
+        AttaqueStrategy mitraillette = Mitraillette.getInstance();
+        AttaqueStrategy lanceFlamme = LanceFlamme.getInstance();
+        AttaqueStrategy canon = Canon.getInstance();
+        AttaqueStrategy missile = Missile.getInstance();
 
         Unite soldat = new Unite(courir, mitraillette);
         Unite avion = new Unite(voler, missile);
