@@ -11,5 +11,10 @@ public class Unite {
 
     public void seDeplacer() { this.deplacement.deplacer(); }
     public void attaquer() {this.attaque.attaque(); }
+    public void seDeplacerEtAttaquer() {
+        System.out.println("-- Deplacement et attaque --");
+        this.deplacement.deplacer();
+        this.attaque.attaque();
+    }
 
 }
