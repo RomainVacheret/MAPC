@@ -2,9 +2,9 @@ package td4.ex2;
 
 public class App {
     public static void main(String[] args) {
-        DeplacementStrategy rouler = new Rouler();
-        DeplacementStrategy courir = new Courir();
-        DeplacementStrategy voler = new Voler();
+        DeplacementStrategy rouler = Rouler.getInstance();
+        DeplacementStrategy courir = Courir.getInstance();
+        DeplacementStrategy voler = Voler.getInstance();
 
         AttaqueStrategy mitraillette = Mitraillette.getInstance();
         AttaqueStrategy lanceFlamme = LanceFlamme.getInstance();
