@@ -34,6 +34,7 @@ public class DistributeurSelection implements DistributeurState {
     public int remboursement(Distributeur d) {
         int caisse = d.getCaisse();
         d.razCaisse();
+        d.setState(DistributeurPaiement.getInstance());
         return caisse;
     }
 }
