@@ -14,8 +14,9 @@ public class LanceFlamme implements AttaqueStrategy {
     }
 
     @Override
-    public void attaque() {
+    public void attaque(Unite unite) {
         System.out.println("Attaque 1 (Lance flamme)");
+        unite.estAttaque(1);
     }
     
 }

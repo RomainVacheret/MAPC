@@ -14,8 +14,9 @@ public class Missile implements AttaqueStrategy {
     }
 
     @Override
-    public void attaque() {
+    public void attaque(Unite unite) {
        System.out.println("Attaque 4 (Missible)");
+       unite.estAttaque(4);
     }
     
 }

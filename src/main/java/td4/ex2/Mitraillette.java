@@ -15,8 +15,9 @@ public class Mitraillette implements AttaqueStrategy {
     }
 
     @Override
-    public void attaque() {
+    public void attaque(Unite unite) {
         System.out.println("Attaque de 2 (Mitraillette)");
+        unite.estAttaque(2);
     }
     
 }

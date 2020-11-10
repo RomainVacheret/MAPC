@@ -13,8 +13,9 @@ public class Canon implements AttaqueStrategy {
     }
 
     @Override
-    public void attaque() {
+    public void attaque(Unite unite) {
         System.out.println("Attaque 3 (Canon)");
+        unite.estAttaque(3);
     }
     
 }
