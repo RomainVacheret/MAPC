@@ -13,8 +13,9 @@ public class Courir implements DeplacementStrategy {
     }
 
     @Override
-    public void deplacer() {
+    public void deplacer(Unite unite) {
         System.out.println("Avance de 2 (Courir)");
+        unite.deplacement(2);
     }
     
 }

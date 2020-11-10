@@ -13,8 +13,9 @@ public class Rouler implements DeplacementStrategy {
     }
 
     @Override
-    public void deplacer() {
+    public void deplacer(Unite unite) {
         System.out.println("Avance de 1 (Rouler)");
+        unite.deplacement(1);
     }
     
 }

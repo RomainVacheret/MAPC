@@ -13,8 +13,9 @@ public class Voler implements DeplacementStrategy {
     }
 
     @Override
-    public void deplacer() {
+    public void deplacer(Unite unite) {
         System.out.println("Avancer de 3 (Voler)");
+        unite.deplacement(3);
     }
     
 }

@@ -28,15 +28,10 @@ public class App {
         
         do {
             int autreIdx = new Random().nextInt(unitesVivantes.size());
-            unitesVivantes.get(idx).attaquer(unitesVivantes.get(autreIdx));
+            unitesVivantes.get(idx).seDeplacerEtAttaquer(unitesVivantes.get(autreIdx));
             unitesVivantes = unites.stream().filter(Unite::estVivant).collect(Collectors.toList());
             idx = (idx + 1) % unitesVivantes.size();
         } while(unitesVivantes.size() != 1);
-        
-        // soldat.seDeplacerEtAttaquer(char_);
-        // avion.seDeplacerEtAttaquer(charModifie);
-        // char_.seDeplacerEtAttaquer(avion);
-        // charModifie.seDeplacerEtAttaquer(char_);
 
         System.out.println(soldat.estVivant());
         System.out.println(avion.estVivant());
